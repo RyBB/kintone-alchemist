@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "babel-cli": "^6.26.0",
+    "braces": "^3.0.2",
+    "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.4"
