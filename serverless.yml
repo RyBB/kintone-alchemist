@@ -2,8 +2,10 @@ service: kintone-alchemist
 
 custom:
   defaultStage: prod
-  defaultDomain: {subdomain}.cybozu.com # Your kintone URL
-  defaultAuth: {xxxxxxxx} # Your AUTH (LoginID:Password base64 encode)
+  defaultDomain: {xxxx}.cybozu.com # Your kintone URL
+  defaultAuth: {xxxxxx} # Your AUTH (LoginID:Password base64 encode)
+  defaultSpaceID: {xx} # Your Space ID
+  defaultThreadID: {xx} # Your Thread ID
 
 provider:
   name: aws
@@ -22,11 +24,13 @@ provider:
   environment:
     CYBOZU_DOMAIN: ${self:custom.defaultDomain}
     CYBOZU_AUTH: ${self:custom.defaultAuth}
+    SPACE_ID: ${self:custom.defaultSpaceID}
+    THREAD_ID: ${self:custom.defaultThreadID}
 
 functions:
   func:
     handler: handler.main
-    description: 錬kin術 (SORACOM Enterprize Button Plus)
+    description: 錬kin術
     events:
       - http:
           path: renkin

@@ -18,8 +18,8 @@ exports.main = {
     let url = `https://${process.env.CYBOZU_DOMAIN}/k/v1/preview/app.json`;
     let body = JSON.stringify({
       name: `錬kin術！ ${moment().add('H', 9).format('HH:mm:ss')} `,
-      space: 745,
-      thread: 1398,
+      space: process.env.SPACE_ID,
+      thread: process.env.THREAD_ID,
     });
     let params = {...params_origin, url, body};
     return req(params).then(resp => JSON.parse(resp).app).catch(err => console.log(err));
