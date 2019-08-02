@@ -2,7 +2,6 @@ const req = require('request-promise');
 const moment = require('moment');
 const hagarenData = require('./hagarenData');
 
-
 let params_origin = {
   method: 'POST',
   url: '',

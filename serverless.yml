@@ -1,0 +1,36 @@
+service: kintone-alchemist
+
+custom:
+  defaultStage: prod
+  defaultDomain: {subdomain}.cybozu.com # Your kintone URL
+  defaultAuth: {xxxxxxxx} # Your AUTH (LoginID:Password base64 encode)
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: dev
+  timeout: 15
+  region: ap-northeast-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - logs:CreateLogGroup
+        - logs:CreateLogStream
+        - logs:PutLogEvents
+      Resource:
+        - "*"
+  environment:
+    CYBOZU_DOMAIN: ${self:custom.defaultDomain}
+    CYBOZU_AUTH: ${self:custom.defaultAuth}
+
+functions:
+  func:
+    handler: handler.main
+    description: 錬kin術 (SORACOM Enterprize Button Plus)
+    events:
+      - http:
+          path: renkin
+          method: post
+          cors: true
+    environment:
+      FUNCTION_NAME: ${self:service}-${self:provider.stage}
