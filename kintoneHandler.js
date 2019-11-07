@@ -2,6 +2,8 @@ const req = require('request-promise');
 const moment = require('moment');
 const hagarenData = require('./hagarenData');
 
+const JSFILE_URL = '{S3_URL}';
+
 let params_origin = {
   method: 'POST',
   url: '',
@@ -94,7 +96,7 @@ exports.main = {
       desktop: {
         js: [{
           type: 'URL',
-          url: 'https://bb-soracombtn-ep-plus-de-serverlessdeploymentbuck-2b9emewvrdgb.s3-ap-northeast-1.amazonaws.com/renkin.js'
+          url: JSFILE_URL
         }],
         css: []
       },
